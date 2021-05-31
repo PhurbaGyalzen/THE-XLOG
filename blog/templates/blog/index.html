@@ -1,0 +1,331 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}THE XLOG{% endblock %}
+
+{% block style %}
+
+<!-- Template Main CSS File -->
+<link href="{% static 'blog/css/style.css' %}" rel="stylesheet">
+{% endblock %}
+
+
+{% block content %}
+
+<!-- ======= Header ======= -->
+<header id="header" class="header-transparent">
+    <div class="container">
+
+        <div id="logo" class="pull-left">
+            <h1><a href="{% url 'blog:homepage' %}">THE XLOG</a></h1>
+        </div>
+
+        <nav id="nav-menu-container">
+            <ul class="nav-menu my-2">
+                <li class="menu-active"><a href="{% url 'blog:homepage' %}">Home</a></li>
+                <li><a href="#about">Our Story</a></li>
+                <li><a href="#services">Features</a></li>
+                <li><a href="#team">Developer</a></li>
+                <li><a href="#contact">Contact</a></li>
+                <li><a href="{% url 'blog:blog' %}">Blog</a></li>
+            </ul>
+        </nav><!-- #nav-menu-container -->
+    </div>
+</header><!-- End Header -->
+
+<!-- ======= Hero Section ======= -->
+<section id="hero">
+    <div class="hero-container" data-aos="zoom-in" data-aos-delay="100">
+        <h1>Welcome to the XLOG</h1>
+        <h2>Create a personalized home for your thinking.</h2>
+        <a href="#about" class="btn-get-started">Get Started</a>
+    </div>
+</section>
+<!-- End Hero Section -->
+
+<main id="main">
+
+    <!-- ======= About Section ======= -->
+    <section id="about">
+        <div class="container" data-aos="fade-up">
+            <div class="row about-container">
+
+                <div class="col-lg-6 content order-lg-1 order-2">
+                    <h2 class="title">Our Story</h2>
+                    <p>
+                        The best ideas can change who we are. Xlog is where those ideas take shape, take off, and spark
+                        powerful
+                        conversations. We’re an open platform where 170 million readers come to find insightful and
+                        dynamic
+                        thinking. Here, expert and undiscovered voices alike dive into the heart of any topic and bring
+                        new ideas
+                        to the surface. Our purpose is to spread these ideas and deepen understanding of the world.
+                    </p>
+
+                    <div class="icon-box" data-aos="fade-up" data-aos-delay="100">
+                        <div class="icon"><i class="fa fa-book"></i></div>
+                        <h4 class="title"><a href="">Read</a></h4>
+                        <p class="description">Read as much as you want and enjoy unlimited access to every story across
+                            all of
+                            your devices</p>
+                    </div>
+
+                    <div class="icon-box" data-aos="fade-up" data-aos-delay="200">
+                        <div class="icon"><i class="fa fa-pencil"></i></div>
+                        <h4 class="title"><a href="">Write</a></h4>
+                        <p class="description">Write about what matters to you, and give form to anything from a quick
+                            thought to
+                            a long story</p>
+                    </div>
+
+                    <div class="icon-box" data-aos="fade-up" data-aos-delay="300">
+                        <div class="icon"><i class="fa fa-connectdevelop"></i></div>
+                        <h4 class="title"><a href="">Connect With World</a></h4>
+                        <p class="description">Find and engage with readers who care about what you have to say — and
+                            want to read
+                            more of it</p>
+                    </div>
+
+                </div>
+
+                <div class="col-lg-6 background order-lg-2 order-1" data-aos="fade-left" data-aos-delay="100"></div>
+            </div>
+
+        </div>
+    </section><!-- End About Section -->
+
+    <!-- ======= Facts Section ======= -->
+    <section id="facts">
+        <div class="container" data-aos="fade-up">
+            <div class="section-header">
+                <h3 class="section-title">Why choose Xlog?</h3>
+                <p class="section-description">On Xlog everybody who wants a voice has one, and as a writer is free to
+                    write
+                    on any topic that interests him/her.</p>
+            </div>
+            <div class="row counters">
+
+                <div class="col-lg-3 col-6 text-center">
+                    <span data-toggle="counter-up">2320</span>
+                    <p>Thousand Writers</p>
+                </div>
+
+                <div class="col-lg-3 col-6 text-center">
+                    <span data-toggle="counter-up">521</span>
+                    <p>Articels</p>
+                </div>
+
+                <div class="col-lg-3 col-6 text-center">
+                    <span data-toggle="counter-up">170</span>
+                    <p>Million Users</p>
+                </div>
+
+                <div class="col-lg-3 col-6 text-center">
+                    <span data-toggle="counter-up">15</span>
+                    <p>Categories</p>
+                </div>
+
+            </div>
+
+        </div>
+    </section><!-- End Facts Section -->
+
+    <!-- ======= Services Section ======= -->
+    <section id="services">
+        <div class="container" data-aos="fade-up">
+            <div class="section-header">
+                <h3 class="section-title">Features</h3>
+                <p class="section-description">The XLOG has a lot of different services for creative writers/readers.
+                </p>
+            </div>
+            <div class="row">
+                <div class="col-lg-4 col-md-6" data-aos="zoom-in">
+                    <div class="box">
+                        <div class="icon"><a href=""><i class="fa fa-shield"></i></a></div>
+                        <h4 class="title"><a href="">Highly Secure</a></h4>
+                        <p class="description">Advance hasing algorithm, bcrypt is used so that hackers cannot easily
+                            access
+                            sensitive data.</p>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6" data-aos="zoom-in">
+                    <div class="box">
+                        <div class="icon"><a href=""><i class="fa fa-smile-o"></i></a></div>
+                        <h4 class="title"><a href="">User Friendly</a></h4>
+                        <p class="description">Supports all kind of devices and was build considering user experience as
+                            the main
+                            focus.</p>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6" data-aos="zoom-in">
+                    <div class="box">
+                        <div class="icon"><a href=""><i class="fa fa-users"></i></a></div>
+                        <h4 class="title"><a href="">Larger Audience</a></h4>
+                        <p class="description">Supports larger audiance which results to have more users with different
+                            ideas.</p>
+                    </div>
+                </div>
+
+                <div class="col-lg-4 col-md-6" data-aos="zoom-in">
+                    <div class="box">
+                        <div class="icon"><a href=""><i class="fa fa-book"></i></a></div>
+                        <h4 class="title"><a href="">Unlimited Access</a></h4>
+                        <p class="description">Users should not have to pay a single penny to access any articles.</p>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6" data-aos="zoom-in">
+                    <div class="box">
+                        <div class="icon"><a href=""><i class="fa fa-graduation-cap"></i></a></div>
+                        <h4 class="title"><a href="">Multiple Category</a></h4>
+                        <p class="description">Users can read and write about their choice of category.</p>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6" data-aos="zoom-in">
+                    <div class="box">
+                        <div class="icon"><a href=""><i class="fa fa-wrench"></i></a></div>
+                        <h4 class="title"><a href="">Regularly Updated</a></h4>
+                        <p class="description">The site releases updates regularly and more features can be seen in near
+                            future.
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </section><!-- End Services Section -->
+
+    <!-- ======= Call To Action Section ======= -->
+    <section id="call-to-action">
+        <div class="container">
+            <div class="row" data-aos="zoom-in">
+                <div class="col-lg-9 text-center text-lg-left">
+                    <h3 class="cta-title">Write your own Blog</h3>
+                    <p class="cta-text"> If you have a story to tell, knowledge to share, or a perspective to offer —
+                        welcome
+                        home. It’s easy and free to post your thinking on any topic, whether it’s a standalone piece, a
+                        blog, or a
+                        publication with other writers. And with tools that let you express yourself creatively and
+                        connect with a
+                        growing audience of 170 million readers, you’ll have the chance to plant a seed, or even start a
+                        movement.
+                    </p>
+                </div>
+                <div class="col-lg-3 cta-btn-container text-center">
+                    <a class="cta-btn align-middle" href="/login">Start Writing</a>
+                </div>
+            </div>
+
+        </div>
+    </section><!-- End Call To Action Section -->
+
+
+
+    <!-- ======= Developer Team Section ======= -->
+    <section id="team">
+        <div class="container" data-aos="fade-down">
+            <div class="section-header">
+                <h3 class="section-title">Developer</h3>
+                <p class="section-description">Phurba Gyalzen Sherpa is a Django developer and currently studying
+                    Bachelors of
+                    computing in Softwarica college of IT and E-commerce.</p>
+            </div>
+            <div class="row justify-content-center">
+                <div class="col-md-6">
+                    <div class="developer" data-aos="fade-up-left" data-aos-delay="100">
+                        <div class="img-fluid shadow rounded pic"><img src="{% static 'blog/img/developer.jpg' %}"
+                                alt="Phurba Gyalzen Sherpa">
+                        </div>
+                        <h4>Phurba Gyalzen Sherpa</h4>
+                        <span>Chief IT Officer</span>
+                        <div class="social">
+                            <a href="https://github.com/PhurbaGyalzen" class="github"><i class="fa fa-github"></i></a>
+                            <a href="https://twitter.com/GyalzenPhurba" class="twitter"><i
+                                    class="fa fa-twitter"></i></a>
+                            <a href="https://www.facebook.com/Gyalzen.sherpa.360/" class="facebook"><i
+                                    class="fa fa-facebook"></i></a>
+                            <a href="https://www.instagram.com/phurba_gyalzen_sherpa/" class="instagram"><i
+                                    class="fa fa-instagram"></i></a>
+                            <a href="https://www.linkedin.com/in/phurba-sherpa-5341ba1aa/" class="linkedin"><i
+                                    class="fa fa-linkedin"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </section><!-- End Developer Section -->
+
+    <!-- ======= Contact Section ======= -->
+    <section id="contact">
+        <div class="container">
+            <div class="section-header" data-aos="fade-down">
+                <h3 class="section-title">Contact Us</h3>
+                <p class="section-description">You can also visit our office using the provided map below.</p>
+            </div>
+        </div>
+
+
+        <div class="container mt-5">
+            <div class="row justify-content-center">
+                <div class="col-md-8 shadow-sm" data-aos="zoom-in">
+                    <iframe
+                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3532.35900588608!2d85.32785091456535!3d27.70619973215038!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x39eb190a74aa1f23%3A0x74ebef82ad0e5c15!2sSoftwarica%20College%20of%20IT%20%26%20E-Commerce!5e0!3m2!1sen!2snp!4v1616150549005!5m2!1sen!2snp"
+                        width="100%" height="380" frameborder="0" style="border:0" allowfullscreen></iframe>
+
+                </div>
+
+                <div class=" pl-md-5 my-lg-auto mt-sm-3 col-md-4" data-aos="zoom-in">
+
+                    <div class="info">
+                        <div>
+                            <i class="fa fa-map-marker"></i>
+                            <p>Kamal Pokhari<br>Kathmandu, Dilli Bazar</p>
+                        </div>
+
+                        <div>
+                            <i class="fa fa-envelope"></i>
+                            <p>190296@softwarica.edu.np</p>
+                        </div>
+
+                        <div>
+                            <i class="fa fa-phone"></i>
+                            <p>+977 9863027050</p>
+                        </div>
+                    </div>
+
+                    <div class="social-links">
+                        <a href="https://twitter.com/GyalzenPhurba" class="twitter" target="_blank"><i class="fa fa-twitter"></i></a>
+                        <a href="https://www.facebook.com/Gyalzen.sherpa.360/" class="facebook" target="_blank"><i
+                                class="fa fa-facebook"></i></a>
+                        <a href="https://www.instagram.com/phurba_gyalzen_sherpa/" class="instagram" target="_blank"><i
+                                class="fa fa-instagram"></i></a>
+                        <a href="https://www.linkedin.com/in/phurba-sherpa-5341ba1aa/" class="linkedin" target="_blank"><i
+                                class="fa fa-linkedin"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- End Contact Section -->
+
+</main>
+<!-- End #main -->
+
+
+<a href="#" class="back-to-top"><i class="fa fa-chevron-up"></i></a>
+
+{% include "footer.html" %}
+
+{% endblock %}
+
+<!-- JS Files -->
+{% block scripts %}
+
+<script src="{% static 'blog/js/jquery.easing.min.js' %} "></script>
+<script src="{% static 'blog/js/jquery.waypoints.min.js' %}"></script>
+<script src="{% static 'blog/js/counterup.min.js' %}"></script>
+
+
+<!-- Main JS File -->
+<script src="{% static 'blog/js/main.js' %}"></script>
+{% endblock %}

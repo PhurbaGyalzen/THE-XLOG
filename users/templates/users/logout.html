@@ -1,0 +1,47 @@
+{% extends 'base.html'%}
+{% load crispy_forms_tags %}
+
+{% load static %}
+
+{% block title %}THE XLOG{% endblock %}
+
+{% block style %}
+<link href="{% static 'users/css/main.css' %}" rel="stylesheet">
+{% endblock %}
+{% block content %}
+
+{% include "blog/navbar.html" %}
+
+<div class="container">
+    {% if messages %}
+    {% for message in messages %}
+        <div class="alert alert-{{ message.tags }}">
+            {{ message }}
+        </div>
+    {% endfor %}
+{% endif %}
+</div>
+
+<div class="container mb-5">
+    <div class="row">
+        <div class="logout col-md-6 ">
+            <img src="{% static 'users/image/logout.svg'%}" alt="person opening a door" data-aos="fade-right"
+            data-aos-offset="400"
+            data-aos-easing="ease-in-sine">
+        </div>
+        <div class="col-md-6 right-content" data-aos="fade-left"
+        data-aos-offset="300"
+        data-aos-easing="ease-in-sine">
+            <h2 class= "text-info">You have been logged out</h2>
+            <div class="border-top pt-3">
+                <p class='pl-3 text-muted'>Do you want to log in again?</p>
+                <small class="btn text-muted">
+                    <a class="btn btn-outline-primary" href="{% url 'login' %}">Login Again</a>
+                </small>
+            </div>
+        </div>
+    </div>
+    
+</div> 
+
+{% endblock%}

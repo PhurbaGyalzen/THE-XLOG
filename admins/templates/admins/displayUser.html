@@ -1,0 +1,61 @@
+{% extends 'base.html' %}
+{% load static %}
+
+
+{% block title %}Display Users{% endblock %}
+
+{% block style %}
+<link href="{% static 'blog/css/blog.css' %}" rel="stylesheet">
+{% endblock %}
+
+{% block content %}
+{% include "blog/navbar.html" %}
+<div class="container">
+  <nav aria-label="breadcrumb">
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a href="/admin-dashboard/">Home</a></li>
+      <li class="breadcrumb-item" area-current="page" >General User</li>
+      <li class="breadcrumb-item"><a href="/admin-dashboard/display-admin/">Admins</a></li>
+      <li class="breadcrumb-item"><a href="/admin-dashboard/add-user">Add Users</a></li>
+      <li class="breadcrumb-item"><a href="/admin-dashboard/profile">Admin Profile</a></li>
+      <li class="breadcrumb-item"><a href="/admin-dashboard/get-post">Posts</a></li>
+    </ol>
+</nav>
+    <div class="row" data-aos="fade-up">
+        <div class="col-md-10 offset-md-1">
+            <h1 class="text-center font-weight-bold mt-3">General Users</h1>
+            <div class="card py-2 px-2">
+                <table class="table">
+                    <thead class="thead-dark">
+                      <tr>
+                        <th>Username</th>
+                        <th>Email</th>
+                        <th colspan="2" class="text-center">Functions</th>
+                        <th></th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                    {% for user in users %}
+                      <tr>
+                        <td>{{ user.username }}</td>
+                        <td>{{ user.email }}</td>
+                        <td>
+                            <a href="/admin-dashboard/update-user-to-admin/{{user.id}}"
+                            class="btn btn-secondary ml-md-4 btn-sm" onclick="return confirm('Are you sure want to update {{ user.username }} as Admin?')">Set to Admin</a>
+                        </td>
+                        <td>
+                          <a href="/admin-dashboard/delete-user/{{user.username}}"
+                            class="btn btn-danger btn-sm" onclick="return confirm('Are you sure want to delete {{ user.username }}?')">Delete User</a>
+                        </td>
+                      </tr>
+                    {% endfor %}
+                    </tbody>
+                  </table>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+
+

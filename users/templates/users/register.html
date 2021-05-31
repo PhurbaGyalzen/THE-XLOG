@@ -1,0 +1,35 @@
+{% extends 'base.html'%}
+{% load crispy_forms_tags %}
+
+{% load static %}
+
+{% block title %}THE XLOG{% endblock %}
+
+{% block style %}
+<link href="{% static 'users/css/main.css' %}" rel="stylesheet">
+{% endblock %}
+{% block content %}
+
+{% include "blog/navbar.html" %}
+
+<div class="container mt-md-5 mb-5">
+    <div class="content-section shadow-sm offset-lg-3 col-lg-6" data-aos="zoom-in-up">
+        <form action="" method="POST">
+            {% csrf_token %}
+            <fieldset class="form-group">
+                <legend class="border-bottom mb-4 text-info text-center font-weight-bold">REGISTER NOW</legend>
+                {{ form|crispy }}
+            </fieldset>
+            <div class="form-group">
+                <button type="submit" class="btn btn-info btn-block">Sign Up</button>
+            </div>
+        </form>
+        <div class="border-top pt-3">
+            <small class="text-muted">
+                Already have an account? <a href="{% url 'login' %}" class="ml-2">Sign In</a>
+            </small>
+        </div>
+    </div>
+</div>
+
+{% endblock%}

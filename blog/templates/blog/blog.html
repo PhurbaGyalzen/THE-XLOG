@@ -1,0 +1,105 @@
+{% extends 'base.html' %}
+{% load static %}
+
+
+{% block title %}Articles{% endblock %}
+
+{% block style %}
+<link href="{% static 'blog/css/blog.css' %}" rel="stylesheet">
+{% endblock %}
+
+{% block content %}
+
+{% include "blog/navbar.html" %}
+
+<div class="container">
+    {% if messages %}
+    {% for message in messages %}
+        <div class="alert alert-{{ message.tags }}">
+            {{ message }}
+        </div>
+    {% endfor %}
+    {% endif %}
+</div>
+
+<div class="container">
+    {% if user.is_superuser %}
+        <nav aria-label="breadcrumb">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="/admin-dashboard/">Home</a></l>
+                <li class="breadcrumb-item"><a href="/admin-dashboard/display-user/">General User</a></li>
+                <li class="breadcrumb-item"><a href="/admin-dashboard/display-admin/">Admins</a></li>
+                <li class="breadcrumb-item"><a href="/admin-dashboard/add-user/">Add New Users</a></li>
+                <li class="breadcrumb-item"><a href="/admin-dashboard/profile/">Admin Profile</a></li>
+                <li class="breadcrumb-item"><a href="/admin-dashboard/get-post/">Posts</a></li>
+            </ol>
+        </nav>
+    {% endif %}
+    {% if page_obj.number == 1 and not user.is_superuser %}
+        <div id="blog-starter" class="row" data-aos="zoom-out">
+            <div class="blog-image col-md-8 mt-md-5">
+                <img src="{% static 'blog/img/blog-home.svg'%}" alt="blog image">
+            </div>
+            
+            <div id="blog-right-content" class="col-md-4 mt-md-5">
+                <h1 class="ml-1 text-primary font-weight-bold mt-3">Let's Explore</h1>
+                <p>Anyone can write on XLOG. Thought-leaders, journalists, experts, and individuals with unique perspectives share their thinking here. You’ll find pieces by independent writers from around the globe, stories we feature and leading authors, and smart takes on our own suite of blogs and publications.</p>
+                <a class="button lead" href="#articals">Read</a>
+            </div>
+        </div>
+        {% endif %}
+        <div id="articals">
+        {% for post in posts%}
+        <article class="media content-section shadow mb-5" data-aos="fade-up"
+        data-aos-anchor-placement="center-bottom" data-aos-delay="100">
+            <img class="rounded-circle article-img" src="{{ post.author.profile.image.url }} " alt="author's image">
+            <div class="media-body">
+                <div class="article-metadata">
+                    <a class="mr-2 badge badge-primary h5" href="{% url 'blog:user-posts' post.author.username %}">@{{ post.author }}</a>
+                    <small class="text-muted">{{ post.date_posted|date:"F d, Y"|upper }}</small>
+            </div>
+            <h2><a class="article-title font-weight-bold text-sucess" href="{% url 'blog:post-detail' post.id %}">{{ post.title }}</a></h2>
+            <p class="article-content">{{ post.description|striptags|truncatechars:150 }}</p>
+        </div>
+        {% if post.thumbnail_image %}
+        <img class="article-thumbnail thumbnail-img ml-4 mt-1" src="{{ post.thumbnail_image.url }}" alt="Generic placeholder image">
+        {% endif %}
+    </article>
+
+    {% endfor%}
+</div>
+    <div class="text-center">
+        {% if is_paginated %}
+        {% if page_obj.has_previous %}
+        <a class="btn btn-outline-info mb-4" href="?page=1">First</a>
+        <a class="btn btn-outline-info mb-4" href="?page={{ page_obj.previous_page_number }}">Previous</a>
+        {% endif %}
+        
+        {% for num in page_obj.paginator.page_range %}  
+        {% if page_obj.number == num %}
+        <a class="btn btn-info mb-4" href="?page={{ num }}">{{ num }}</a>
+        {% elif num > page_obj.number|add:'-3' and num < page_obj.number|add:'3'%}
+        <a class="btn btn-outline-info mb-4" href="?page={{ num }}">{{ num }}</a>
+        {% endif %}
+        {% endfor %}
+        
+        {% if page_obj.has_next %}
+        <a class="btn btn-outline-info mb-4" href="?page={{ page_obj.next_page.number }}">Next</a>
+        <a class="btn btn-outline-info mb-4" href="?page={{ page_obj.paginator.num_pages }}">Last</a>
+        {% endif %}
+        {% endif %}
+    </div>
+</div>
+
+<a href="#" onclick="topFunction()" class="back-to-top"><i class="fa fa-chevron-up"></i></a>
+{% if is_paginated %}
+    {% include 'footer.html'%} 
+{% endif %}
+
+
+{% endblock %}
+
+{% block scripts %}
+    <script src="{% static 'blog/js/blog.js' %}"></script>
+{% endblock %}
+

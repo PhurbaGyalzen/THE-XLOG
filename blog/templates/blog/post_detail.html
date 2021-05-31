@@ -1,0 +1,58 @@
+{% extends 'base.html' %}
+{% load static %}
+
+
+{% block title %}THE XLOG{% endblock %}
+
+{% block style %}
+<link href="{% static 'blog/css/blog.css' %}" rel="stylesheet">
+{% endblock %}
+
+{% block content %}
+
+{% include "blog/navbar.html" %}
+
+<div class="container">
+    {% if user.is_superuser %}
+        <nav aria-label="breadcrumb">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="/admin-dashboard/">Home</a></li>
+            <li class="breadcrumb-item"><a href="/admin-dashboard/display-user">General User</a></li>
+            <li class="breadcrumb-item"><a href="/admin-dashboard/display-admin/">Admins</a></li>
+            <li class="breadcrumb-item" area-current="page">Add Users</li>
+            <li class="breadcrumb-item"><a href="/admin-dashboard/profile">Admin Profile</a></li>
+            </ol>
+        </nav>
+    {% endif %}
+    <article class="media content-section shadow" data-aos="fade-right">
+        <img class="rounded-circle article-img" src="{{ object.author.profile.image.url }} " alt="author's image">
+        <div class="media-body">
+            <div class="article-metadata">
+                <a class="mr-2 badge badge-primary text-center h5" href="{% url 'blog:user-posts' post.author.username %}">@{{ post.author }}</a>
+                <small class="text-muted h6"> {{ post.date_posted|date:"F d, Y"|upper }}</small>
+                {% if object.author == user %}
+                    <div class="text-right">
+                        <a class="btn btn-secondary btn-md-lg mt-1 mb-1"
+                            href="{% url 'blog:post-update' object.id %}">Update</a>
+                        <a class="btn btn-danger btn-md-lg mt-1 mb-1 ml-4" href="{% url 'blog:post-delete' object.id %}">Delete</a>
+                    </div>
+                {% elif user.is_superuser %}
+                <a class="btn btn-danger btn-md-lg mt-1 mb-1 ml-4" href="{% url 'blog:post-delete' object.id %}">Delete</a>
+                {% endif %}
+            </div>
+            <h2 class="article-title font-weight-bold ">{{ object.title }}</h2>
+            <p class="article-content">{{ object.content|safe }}</p>      
+        </div>
+    </article>
+</div>
+
+<a href="#" onclick="topFunction()" class="back-to-top"><i class="fa fa-chevron-up"></i></a>
+{% include 'footer.html'%}
+
+
+{% endblock %}
+
+
+{% block scripts %}
+    <script src="{% static 'blog/js/blog.js' %}"></script>
+{% endblock %}

@@ -1,0 +1,119 @@
+{% extends 'base.html' %}
+{% load static %}
+
+
+{% block title %}Admin Panel{% endblock %}
+
+{% block style %}
+<link href="{% static 'blog/css/blog.css' %}" rel="stylesheet">
+<link href="{% static 'admins/css/main.css' %}" rel="stylesheet">
+
+
+{% endblock %}
+
+{% block content %}
+
+{% include "blog/navbar.html" %}
+
+<div class="container">
+
+    <nav aria-label="breadcrumb">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item" area-current="page">Home</li>
+          <li class="breadcrumb-item"><a href="/admin-dashboard/display-user/">General User</a></li>
+          <li class="breadcrumb-item"><a href="/admin-dashboard/display-admin/">Admins</a></li>
+          <li class="breadcrumb-item"><a href="/admin-dashboard/add-user/">Add Users</a></li>
+          <li class="breadcrumb-item"><a href="/admin-dashboard/profile/">Admin Profile</a></li>
+          <li class="breadcrumb-item"><a href="/admin-dashboard/get-post/">Posts</a></li>
+        </ol>
+    </nav>
+    
+    {% for message in messages %}
+    {% if message.level == DEFAULT_MESSAGE_LEVELS.SUCCESS %}
+    <h6 class="bg-success text-white py-3 px-1 my-2 text-center">{{message}}</h6>
+    {% endif %}
+    {% if message.level == DEFAULT_MESSAGE_LEVELS.ERROR%}
+    <h6 class="bg-danger text-white py-3 px-1 my-2 text-center">{{message}}</h6>
+    {% endif %}
+    {% endfor %}
+
+    <div class="row mb-3">
+        <div class="col-md-6">
+            <div class="jumbotron bg-dark" data-aos="fade-up"
+    data-aos-duration="2000">
+                <h1 class="display-5 text-white">Welcome, {{ user }}!!!</h1>
+                <p class="lead text-light">Admin dashboard lets you manage all the  users or post and also provides some useful information about the this website here.</p>     
+            </div>
+        </div>
+        <div class="col-md-6">
+            <img src="{% static 'admins/image/admin.svg'%}" id="admin-img" alt="admin svg" data-aos="fade-up"
+            data-aos-duration="2000">
+        </div>
+    </div>
+   
+    <div class="row">
+        <div class="col">
+            <div class="card text-white bg-secondary mb-3" style="max-width: 35rem;" data-aos="fade-right"
+            data-aos-offset="100"
+            data-aos-easing="ease-in-sine">
+                <div class="card-header text-center">General Users</div>
+                <div class="card-body">
+                    <a href="/admin-dashboard/display-user"><h1 class="card-title text-center" data-toggle="counter-up">{{users}}</h1></a>
+                </div>
+            </div>
+        </div>
+        <div class="col">
+            <div class="card text-white bg-danger mb-3" style="max-width: 35rem;" data-aos="fade-left"
+            data-aos-offset="100"
+            data-aos-easing="ease-in-sine">
+                <div class="card-header text-center">Total Admins</div>
+                <div class="card-body">
+                    <a href="/admin-dashboard/display-admin"><h1 class="card-title text-center" data-toggle="counter-up">{{admins}}</h1></a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col">
+            <div class="card text-white bg-info mb-3" style="max-width: 35rem;" data-aos="fade-right"
+            data-aos-offset="150"
+            data-aos-easing="ease-in-sine">
+                <div class="card-header text-center">Total Posts</div>
+                <div class="card-body">
+                    <a href="/admin-dashboard/get-post/"><h1 class="card-title text-center" data-toggle="counter-up">{{posts}}</h1></a>
+                </div>
+            </div>
+        </div>
+        <div class="col">
+            <div class="card text-white bg-success mb-3" style="max-width: 35rem;" data-aos="fade-left"
+            data-aos-offset="150"
+            data-aos-easing="ease-in">
+                <div class="card-header text-center">Total Users</div>
+                <div class="card-body">
+                    <h1 class="card-title text-center" data-toggle="counter-up">{{ total_users }}</h1>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+{% include 'footer.html '%}
+
+{% endblock %}
+
+{% block scripts %}
+    <script src="{% static 'blog/js/jquery.waypoints.min.js' %}"></script>
+    <script src="{% static 'blog/js/counterup.min.js' %}"></script>
+
+    <script>
+        $('[data-toggle="counter-up"]').counterUp({
+            delay: 30,
+            time: 1000
+          });
+    </script>
+        
+
+{% endblock %}
+

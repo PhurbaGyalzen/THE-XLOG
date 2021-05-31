@@ -1,0 +1,55 @@
+{% extends 'base.html' %}
+{% load static %}
+
+
+{% block title %}Display Users{% endblock %}
+
+{% block style %}
+<link href="{% static 'blog/css/blog.css' %}" rel="stylesheet">
+{% endblock %}
+
+{% block content %}
+{% include "blog/navbar.html" %}
+<div class="container">
+  <nav aria-label="breadcrumb">
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a href="/admin-dashboard/">Home</a></li>
+      <li class="breadcrumb-item"><a href="/admin-dashboard/display-user">General User</a></li>
+      <li class="breadcrumb-item" area-current="page">Admins</li>
+      <li class="breadcrumb-item"><a href="/admin-dashboard/add-user">Add Users</a></li>
+      <li class="breadcrumb-item"><a href="/admin-dashboard/profile">Admin Profile</a></li>
+      <li class="breadcrumb-item"><a href="/admin-dashboard/get-post">Posts</a></li>
+    </ol>
+</nav>
+  <div data-aos="fade-up">
+    <div class="row">
+      <div class="col-md-10 offset-md-1">
+          <h1 class="text-center font-weight-bold mt-3">Admin Users</h1>
+          <div class="card py-2 px-2">
+              <table class="table">
+                  <thead class="thead-dark">
+                    <tr>
+                      <th>Firstname</th>
+                      <th>Email</th>
+                      <th>Functions</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                  {% for admin in admins %}
+                    <tr>
+                      <td>{{ admin.username }}</td>
+                      <td>{{ admin.email }}</td>
+                      <td>
+                          <a href="/admin-dashboard/update-admin-to-user/{{admin.id}}"
+                          class="btn btn-danger btn-sm" onclick="return confirm('Are you sure want to update {{admin.username}} to User?')">Set to User</a>
+                      </td>
+                    </tr>
+                  {% endfor %}
+                  </tbody>
+                </table>
+          </div>
+      </div>
+  </div>
+  </div>
+</div>
+{% endblock %}

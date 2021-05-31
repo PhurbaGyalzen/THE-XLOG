@@ -1,0 +1,61 @@
+{% extends 'base.html'%}
+{% load crispy_forms_tags %}
+
+{% load static %}
+
+{% block title %}THE XLOG{% endblock %}
+
+{% block style %}
+<link href="{% static 'users/css/main.css' %}" rel="stylesheet">
+{% endblock %}
+{% block content %}
+
+{% include "blog/navbar.html" %}
+
+<div class="container">
+  {% if messages %}
+  {% for message in messages %}
+  <div class="alert alert-{{ message.tags }}">
+    {{ message }}
+  </div>
+  {% endfor %}
+  {% endif %}
+</div>
+
+<div class="container">
+  <nav aria-label="breadcrumb">
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a href="/admin-dashboard/">Home</a></li>
+      <li class="breadcrumb-item"><a href="/admin-dashboard/display-user">General User</a></li>
+      <li class="breadcrumb-item"><a href="/admin-dashboard/display-admin/">Admins</a></li>
+      <li class="breadcrumb-item"><a href="/admin-dashboard/add-user">Add Users</a></li>
+      <li class="breadcrumb-item" area-current="page">Admin Profile</li>
+      <li class="breadcrumb-item"><a href="/admin-dashboard/get-post">Posts</a></li>
+    </ol>
+</nav>
+      
+    <div class="content-section" data-aos="fade-right">
+    <div class="media">
+      <img class="rounded-circle mt-3 account-img" src="{{ user.profile.image.url }}">
+      <div class="media-body">
+        <h2 class="account-heading ml-3 mt-4">{{ user.username }}</h2>
+        <p class="text-secondary h5 ml-3">{{user.email}}</p>
+      </div>
+    </div>
+    <form action="" method="POST" enctype="multipart/form-data">
+      {% csrf_token %}
+      <fieldset class="form-group">
+          <legend class="border-bottom mb-4 pt-3 text-info h1">Profile Information</legend>
+          {{ u_form|crispy }}
+          {{ p_form|crispy }}
+      </fieldset>
+      <div class="form-group">
+          <button type="submit" class="btn btn-block btn-outline-info">Update</button>
+      </div>
+    </form>
+  </div>
+</div>
+
+{% include 'footer.html' %}
+
+{% endblock content %}

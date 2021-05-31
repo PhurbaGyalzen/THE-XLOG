@@ -1,0 +1,81 @@
+.content-section {
+  background: #ffffff;
+  padding: 10px 20px;
+  border: 1px solid #dddddd;
+  border-radius: 3px;
+  margin-bottom: 20px;
+}
+
+.account-img {
+  height: 125px;
+  width: 125px;
+  margin-right: 20px;
+  margin-bottom: 16px;
+}
+
+.account-heading {
+  font-size: 2.5rem;
+}
+
+
+
+@media (min-width:768px){
+  .right-content{
+    padding-top: 8rem;
+    padding-left: 5rem;
+  }
+  .logout img{
+    padding-top:5rem;
+    height: auto;
+    width: 100%;
+  }
+}
+
+@media (max-width:766px){
+  .right-content{
+    padding-top: 4rem;
+    padding-left: 3rem;
+  }
+  .logout img{
+    padding-top:5rem;
+    height: auto;
+    width: 100%;
+  }
+}
+
+.outer-cover{
+  min-height: 100%;
+}
+
+.inner-cover{
+  overflow: auto;
+  padding-bottom: 100px;
+}
+
+.footer-cover{
+  position: relative;
+  margin-top: -100px;
+}
+
+@media only screen and (min-width: 600px) {
+  #complete-img{
+    width: 95%;
+    margin-top: 3rem;
+    margin-left: 3rem;
+  }
+}
+
+
+@media only screen and (max-width: 600px) {
+  #complete-img{
+    width: 60%;
+    margin-top: 3rem;
+    margin-left: 3rem;
+  }
+}
+
+
+
+
+
+

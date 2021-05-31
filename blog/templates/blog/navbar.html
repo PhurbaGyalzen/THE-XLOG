@@ -1,0 +1,30 @@
+<nav id="navbar" class="navbar navbar-expand-lg navbar-dark bg-dark mb-4">
+    <div class="container">
+        {% if user.is_authenticated and user.is_superuser %}
+        <a class="navbar-brand h1" href="/admin-dashboard">ADMIN DASHBOARD</a>
+        {% else %}
+        <a class="navbar-brand h1" href="{% url 'blog:homepage' %}">THE XLOG</a>
+        {% endif %}
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup"
+            aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button> 
+        <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+            <div class="navbar-nav ml-auto">
+                <a class="nav-item nav-link {{ activate_blog }}" href="{% url 'blog:blog'%}">BLOG <span
+                        class="sr-only">(current)</span></a>
+                {% if user.is_authenticated and not user.is_superuser %}
+                <a class="nav-item nav-link pl-md-4 {{ activate_write }}" href="{% url 'blog:post-create' %}">WRITE</a>
+                <a class="nav-item nav-link pl-md-4 {{ activate_profile }}" href="{% url 'profile' %}">PROFILE</a>
+                <a class="nav-item nav-link pl-md-4" href="{% url 'logout'%}">LOGOUT</a>
+                {% elif user.is_authenticated and user.is_superuser %}
+                <a class="nav-item nav-link pl-md-4 {{ activate_admin_profile }}" href="/admin-dashboard/profile/">PROFILE</a>
+                <a class="nav-item nav-link pl-md-4" href="{% url 'logout'%}">LOGOUT</a>
+                {% else %}
+                <a class="nav-item nav-link pl-md-4 {{ activate_register }}" href="{% url 'register'%}">REGISTER</a>
+                <a class="nav-item nav-link pl-md-4 {{ activate_login }}" href="{% url 'login' %}">LOGIN</a>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+</nav>
